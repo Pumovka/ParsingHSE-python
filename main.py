@@ -62,4 +62,18 @@ def search_best_course(list):
     pass
 search_best_course(list)
 
-print("Курс с наивысшем баллом и балл",best_course(list))
+
+def sort_by_title(list):#выбор номера курса для ключа сортировки
+    return list.title
+
+def funcSortTitle(list):#сортировка по имени
+    try:
+        list.sort(key = sort_by_title)
+    except TypeError as te:
+        print(te)
+    printStuds(list)
+pass
+
+
+print("Курс с наивысшем баллом и балл", best_course(list)) 
+funcSortTitle(list)
