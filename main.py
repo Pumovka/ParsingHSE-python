@@ -1,6 +1,10 @@
+from fileinput import filename
 import requests
 from bs4 import BeautifulSoup as BS
 import json
+import csv
+
+
 class Student():
     def __init__(self, title, course, place, average, gpa):
         self.title = title
@@ -77,3 +81,24 @@ pass
 
 print("Курс с наивысшем баллом и балл", best_course(list)) 
 funcSortTitle(list)
+
+# FILENAME = "students.csv"
+# with open('students.csv', 'w') as file:
+
+#     for i in range(len(list)):
+#         writer = csv.writer(file)
+#         writer.writerow(list)
+
+        
+
+print("Writing complete")
+
+# def search_mark(list):
+#     mark = input("Введите балл")
+#     for i in range(len(list)):
+#         if(list[i].gpa == mark):
+#             print(list[i].printStudent())
+
+#     pass
+
+# search_mark(list)
