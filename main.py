@@ -14,7 +14,8 @@ class Student():
     pass
 
 list = []
-
+list_a = []
+list_marks = [0,0,0,0]
 def printStuds(list):#создаю функцию для вывода всех студентов из списка 
     for i in range(len(list)): 
         list[i].printStudent()
@@ -30,5 +31,35 @@ for i in range(len(list_links)):
         stud = Student(item['title'], course ,item['place'], item["gradeMid"], item['gpa'])
         list.append(stud)
 
-printStuds(list)
+# printStuds(list)
 
+
+def best_course(list): #поиск лучшей группы
+    mark = list_marks[0]
+    for i in range(len(list_marks)):
+        if mark < list_marks[i]:
+           mark = list_marks[i]
+           course = i+1
+    return course, mark
+
+
+
+def search_best_course(list):
+    
+    n = 0
+    for course in range(4):
+        for i in range(len(list)): 
+            if(list[i].course == course + 1):
+                list_a.append(list[i])
+        for i in range(len(list_a)):
+            list_marks[n] = list_marks[n] + list_a[i].average
+        list_marks[n] = list_marks[n] / len(list_a)
+        n = n + 1
+        list_a.clear()
+
+    for i in range(len(list_marks)):
+        print(list_marks[i])
+    pass
+search_best_course(list)
+
+print("Курс с наивысшем баллом и балл",best_course(list))
