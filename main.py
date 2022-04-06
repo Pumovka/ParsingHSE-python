@@ -1,8 +1,8 @@
-from fileinput import filename
 import requests
 from bs4 import BeautifulSoup as BS
 import json
-import csv
+import pandas as pd
+
 
 
 class Student():
@@ -78,27 +78,16 @@ def funcSortTitle(list):#сортировка по имени
     printStuds(list)
 pass
 
-
 print("Курс с наивысшем баллом и балл", best_course(list)) 
 funcSortTitle(list)
 
-# FILENAME = "students.csv"
-# with open('students.csv', 'w') as file:
 
-#     for i in range(len(list)):
-#         writer = csv.writer(file)
-#         writer.writerow(list)
 
-        
+   
+def input_csv(list):
+    df = pd.DataFrame(list)
+    df.to_csv("file_list.csv", index=False, header=False) 
+    print("Запись сделана")
+    pass
 
-print("Writing complete")
-
-# def search_mark(list):
-#     mark = input("Введите балл")
-#     for i in range(len(list)):
-#         if(list[i].gpa == mark):
-#             print(list[i].printStudent())
-
-#     pass
-
-# search_mark(list)
+input_csv(list) #не пофиксила вывод адреса ячейки, а не содержимого
