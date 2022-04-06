@@ -13,6 +13,9 @@ class Student():
         self.average = average
         self.gpa = gpa
         pass
+    def __repr__(self):
+        return '{title:'+self.title+', course:'+str(self.course)+ ', plase:'+str(self.place)+', average:' + str(self.average)+', gpa:'+str(self.gpa)+'}'
+        pass
     def printStudent(self):
         print("ФИО:", self.title, "Курс:", self.course, "Рейтинг:", self.place, "Cредний балл:", self.average, "GPA:", self.gpa)
     pass
@@ -72,7 +75,7 @@ def input_csv(list):
     df.to_csv("file_list.csv", index=False, header=False) 
     print("Запись сделана")
     pass
-
+input_csv(list)
 def sort_by_title(list):#выбор номера курса для ключа сортировки
     return list.title
 
@@ -82,7 +85,6 @@ def funcSortTitle(list):#сортировка по имени
     except TypeError as te:
         print(te)
     printStuds(list)
-    input_csv(list) #не пофиксила вывод адреса ячейки, а не содержимого
 pass
 funcSortTitle(list)
 print("Курс с наивысшем баллом и балл", best_course(list)) 
