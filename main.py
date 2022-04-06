@@ -20,10 +20,12 @@ class Student():
 list = []
 list_a = []
 list_marks = [0,0,0,0]
+
 def printStuds(list):#создаю функцию для вывода всех студентов из списка 
     for i in range(len(list)): 
         list[i].printStudent()
 pass
+
 #Создаю список ссылок и записываю элементы в лист для создания общего списка
 list_links = ["https://www.hse.ru/n/student-ratings/api?unit=122392301&course=1&from=576252978", "https://www.hse.ru/n/student-ratings/api?unit=122392301&course=2&from=576252978", "https://www.hse.ru/n/student-ratings/api?unit=122392301&course=3&from=576252978", "https://www.hse.ru/n/student-ratings/api?unit=122392301&course=4&from=576252978"]
 
@@ -61,11 +63,15 @@ def search_best_course(list):
         n = n + 1
         list_a.clear()
 
-    for i in range(len(list_marks)):
-        print(list_marks[i])
-    pass
+    # for i in range(len(list_marks)): #вывод всех средних баллов
+    #     print(list_marks[i])
+    # pass
 search_best_course(list)
-
+def input_csv(list):
+    df = pd.DataFrame(list)
+    df.to_csv("file_list.csv", index=False, header=False) 
+    print("Запись сделана")
+    pass
 
 def sort_by_title(list):#выбор номера курса для ключа сортировки
     return list.title
@@ -76,18 +82,13 @@ def funcSortTitle(list):#сортировка по имени
     except TypeError as te:
         print(te)
     printStuds(list)
+    input_csv(list) #не пофиксила вывод адреса ячейки, а не содержимого
 pass
-
-print("Курс с наивысшем баллом и балл", best_course(list)) 
 funcSortTitle(list)
+print("Курс с наивысшем баллом и балл", best_course(list)) 
 
 
 
    
-def input_csv(list):
-    df = pd.DataFrame(list)
-    df.to_csv("file_list.csv", index=False, header=False) 
-    print("Запись сделана")
-    pass
 
-input_csv(list) #не пофиксила вывод адреса ячейки, а не содержимого
+
